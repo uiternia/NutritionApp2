@@ -58,4 +58,42 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'posts')
+            ->withPivot('id');
+    }
+
+    public function post_favorites()
+    {
+        return $this->belongsToMany(Post::class, 'posts', 'post_id', 'user_id');
+    }
+
+    public function favorite($postId)
+    {
+        $exit = $this->is_favorites($postId);
+        if ($exit) {
+            return false;
+        } else {
+            $this->favorites()->attach($postId);
+            return true;
+        }
+    }
+
+    public function unfavorite($postId)
+    {
+        $exit = $this->is_favorites($postId);
+        if ($exit) {
+            $this->favorites()->detach($postId);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function is_favorites($postId)
+    {
+        return $this->favorites()->where('post_id', $postId)->exists();
+    }
 }
