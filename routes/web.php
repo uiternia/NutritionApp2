@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\FavoriteController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,7 +26,18 @@ Route::get('/', function () {
     ]);
 });
 
-Route::resource('post',PostController::class)->middleware(['auth:sanctum']);
+
+Route::get('/favorite',[FavoriteController::class,'index'])->middleware(['auth:sanctum'])->name('favorite.index');
+
+Route::post('/posts/{post}/favorite',[FavoriteController::class,'store'])->middleware(['auth:sanctum'])->name('favorite.store');
+Route::post('/posts/{post}/unfavorite',[FavoriteController::class,'delete'])->middleware(['auth:sanctum'])->name('favorite.delete');
+
+Route::get('/mypost',[PostController::class,'mypost'])->middleware(['auth:sanctum'])->name('mypost');
+Route::resource('posts',PostController::class)->middleware(['auth:sanctum']);
+
+
+
+
 
 // Route::middleware([
 //     'auth:sanctum',

@@ -7,17 +7,25 @@ use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Favorite;
 use Inertia\Inertia;
 use App\Services\ImageService;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function mypost()
+    {
+        $user = Auth::id();
+        $posts = Post::where('user_id',$user)->get();
+        return Inertia::render('Post/MyPost',
+        [
+            'posts' => $posts,
+        ]);
+    }
+    
     public function index()
     {
         $posts = DB::table('posts')->get();
@@ -28,29 +36,16 @@ class PostController extends Controller
     );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
         return Inertia::render('Post/Create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StorePostRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StorePostRequest $request)
     {
         $user = Auth::id();
         $image = $request->file;
-
-        // $image_name = $request->file->getClientOriginalName();
-        // $request->file->storeAs('public/',$image_name);
 
         if(!is_null($image) && $image->isValid())
         {
@@ -63,50 +58,32 @@ class PostController extends Controller
             'calorie' => $request->calorie,
             'filename' => $fileNameToStore,
         ]);
-        return redirect()->route('post.index');
+        return redirect()->route('posts.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(Post $post)
     {
         $user = Auth::id();
-        return Inertia::render('Post/Show',['post' => $post , 'user' => $user]);
+        $postUser = $post->user;
+        $favorite = Favorite::where('post_id',$post->id)->where('user_id',$user)->first();
+        $favoriteCount = Favorite::where('post_id',$post->id)->get();
+        return Inertia::render('Post/Show',['post' => $post , 'user' => $postUser, 'favorite' => $favorite , 'favoriteCount' => $favoriteCount]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit(Post $post)
     {
         
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdatePostRequest  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(UpdatePostRequest $request, Post $post)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy(Post $post)
     {
         $file = $post->filename;
@@ -114,6 +91,6 @@ class PostController extends Controller
         $filePath = 'public/' . $file;
         Storage::delete($filePath);
         $post->delete();
-        return redirect()->route('post.index');
+        return redirect()->route('posts.index');
     }
 }

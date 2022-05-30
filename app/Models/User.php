@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Post;
+use App\Models\Favorite;
 
 class User extends Authenticatable
 {
@@ -61,39 +63,12 @@ class User extends Authenticatable
 
     public function posts()
     {
-        return $this->hasMany(Post::class, 'posts')
-            ->withPivot('id');
+        return $this->hasMany(Post::class,'posts');
     }
 
-    public function post_favorites()
+    public function favorites()
     {
-        return $this->belongsToMany(Post::class, 'posts', 'post_id', 'user_id');
+        return $this->belongsToMany(Post::class,'favorites');
     }
 
-    public function favorite($postId)
-    {
-        $exit = $this->is_favorites($postId);
-        if ($exit) {
-            return false;
-        } else {
-            $this->favorites()->attach($postId);
-            return true;
-        }
-    }
-
-    public function unfavorite($postId)
-    {
-        $exit = $this->is_favorites($postId);
-        if ($exit) {
-            $this->favorites()->detach($postId);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function is_favorites($postId)
-    {
-        return $this->favorites()->where('post_id', $postId)->exists();
-    }
 }

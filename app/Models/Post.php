@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Favorite;
 
 class Post extends Model
 {
@@ -22,8 +24,8 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function user_favorites()
+    public function users()
     {
-        return $this->belongsToMany(User::class,'users','user_id','post_id');
+        return $this->belongsToMany(User::class,'favorites');
     }
 }

@@ -42,14 +42,14 @@ const logout = () => {
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <Link :href="route('post.index')">
+                                <Link :href="route('posts.index')">
                                     <JetApplicationMark class="block h-9 w-auto" />
                                 </Link>
                             </div>
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <JetNavLink :href="route('post.index')" :active="route().current('post.index')">
+                                <JetNavLink :href="route('posts.index')" :active="route().current('posts.index')">
                                  <div>投稿一覧</div>
                                 </JetNavLink>
                             </div>
@@ -208,7 +208,7 @@ const logout = () => {
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <JetResponsiveNavLink :href="route('post.index')" :active="route().current('post.index')">
+                        <JetResponsiveNavLink :href="route('posts.index')" :active="route().current('posts.index')">
                             Dashboard
                         </JetResponsiveNavLink>
                     </div>

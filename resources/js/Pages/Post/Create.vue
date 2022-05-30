@@ -28,7 +28,7 @@ const fileSelected = (e) => {
 }
 
 const submit = () => {
-  form.post(route('post.store'))
+  form.post(route('posts.store'))
 }
 
 
