@@ -28,7 +28,7 @@ class PostController extends Controller
     
     public function index()
     {
-        $posts = DB::table('posts')->get();
+        $posts = DB::table('posts')->paginate(2);
         return Inertia::render('Post/Index',
         [
             'posts' => $posts,
