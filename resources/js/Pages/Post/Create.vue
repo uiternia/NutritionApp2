@@ -13,8 +13,11 @@ const form = useForm({
   foodname: null,
   file: null,
   postText: null,
-  calorie: 0,
-})
+  calorie: null,
+  carbon: null,
+  protein: null,
+  fat: null,
+  })
 
 const fileSelected = (e) => {
   if (e.target.files.length === 0) {
@@ -54,6 +57,12 @@ const submit = () => {
               <input type="text" class="input-calorie" v-model="form.foodname" />
               <p class="form-content font-mono">食事のカロリー</p>
               <input type="number" class="input-calorie" v-model="form.calorie" />kcal
+              <p class="form-content font-mono">炭水化物</p>
+              <input type="number" class="input-calorie" v-model="form.carbon" />kcal
+              <p class="form-content font-mono">食事のタンパク質</p>
+              <input type="number" class="input-calorie" v-model="form.protein" />kcal
+              <p class="form-content font-mono">食事の脂質</p>
+              <input type="number" class="input-calorie" v-model="form.fat" />kcal
               <button type="submit">投稿する</button>
             </div>
           </form>

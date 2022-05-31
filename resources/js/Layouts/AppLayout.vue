@@ -209,7 +209,7 @@ const logout = () => {
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
                         <JetResponsiveNavLink :href="route('posts.index')" :active="route().current('posts.index')">
-                            Dashboard
+                            投稿一覧
                         </JetResponsiveNavLink>
                     </div>
 

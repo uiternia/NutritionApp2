@@ -22,7 +22,10 @@ return new class extends Migration
             $table->string('foodname');
             $table->string('content');
             $table->string('filename')->nullable();
-            $table->integer('calorie')->nullable();
+            $table->integer('calorie');
+            $table->integer('protein');
+            $table->integer('fat');
+            $table->integer('carbon');
             $table->timestamps();
         });
     }

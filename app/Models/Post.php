@@ -17,6 +17,9 @@ class Post extends Model
         'filename',
         'content',
         'calorie',
+        'carbon',
+        'protein',
+        'fat',
     ];
 
     public function user()

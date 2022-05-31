@@ -3,11 +3,19 @@ import { Link } from '@inertiajs/inertia-vue3'
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Pagination from '@/Components/Pagination';
 import PostList from '../../Jetstream/PostList.vue';
+import { useForm } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
     posts: Object,
 })
 
+const form = useForm({
+    keyword: "",
+})
+
+const submit = () => {
+    form.get(route('post.search'));
+}
 
 </script>
 
@@ -18,6 +26,10 @@ const props = defineProps({
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <PostList />
+                    <form @submit.prevent="submit">
+                    <input type="text" v-model="form.keyword"/>
+                    <button type="submit">検索する</button>
+                    </form>
                     <div v-for="post in posts.data" :key="post.id">
                     <Link :href="route('posts.show',post.id)">
                     {{post.foodname}}
