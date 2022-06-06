@@ -52,6 +52,9 @@ const logout = () => {
                                 <JetNavLink :href="route('posts.index')" :active="route().current('posts.index')">
                                  <div>投稿一覧</div>
                                 </JetNavLink>
+                                <JetNavLink :href="route('nutritions.index')" :active="route().current('nutritions.index')">
+                                 <div>栄養管理</div>
+                                </JetNavLink>
                             </div>
                         </div>
 
@@ -210,6 +213,9 @@ const logout = () => {
                     <div class="pt-2 pb-3 space-y-1">
                         <JetResponsiveNavLink :href="route('posts.index')" :active="route().current('posts.index')">
                             投稿一覧
+                        </JetResponsiveNavLink>
+                        <JetResponsiveNavLink :href="route('nutritions.index')" :active="route().current('nutritions.index')">
+                            栄養管理
                         </JetResponsiveNavLink>
                     </div>
 

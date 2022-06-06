@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import AppLayout from '@/Layouts/AppLayout.vue';
-import PostList from '../../Jetstream/PostList.vue';
+import PostList from '../../Components/PostList.vue';
 import JetValidationErrors from '@/Jetstream/ValidationErrors.vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 
@@ -17,7 +17,7 @@ const form = useForm({
   carbon: null,
   protein: null,
   fat: null,
-  })
+})
 
 const fileSelected = (e) => {
   if (e.target.files.length === 0) {
@@ -47,7 +47,8 @@ const submit = () => {
           <form @submit.prevent="submit">
             <div class="content">
               <p class="label font-mono">食事の写真を選択</p>
-              <input class="input-file" type="file" @input="form.file = $event.target.files[0]" @change="fileSelected" accept="image/png, image/jpeg" />
+              <input class="input-file" type="file" @input="form.file = $event.target.files[0]" @change="fileSelected"
+                accept="image/png, image/jpeg" />
               <div v-if="imageShow" class="file-size">
                 <img class="image" :src="url" alt="">
               </div>
@@ -56,13 +57,13 @@ const submit = () => {
               <p class="form-content font-mono">料理の名前</p>
               <input type="text" class="input-calorie" v-model="form.foodname" />
               <p class="form-content font-mono">食事のカロリー</p>
-              <input type="number" class="input-calorie" v-model="form.calorie" />kcal
+              <input type="number" class="input-calorie" step="0.1" v-model="form.calorie" />kcal
               <p class="form-content font-mono">炭水化物</p>
-              <input type="number" class="input-calorie" v-model="form.carbon" />kcal
+              <input type="number" class="input-calorie" step="0.1" v-model="form.carbon" />kcal
               <p class="form-content font-mono">食事のタンパク質</p>
-              <input type="number" class="input-calorie" v-model="form.protein" />kcal
+              <input type="number" class="input-calorie" step="0.1" v-model="form.protein" />kcal
               <p class="form-content font-mono">食事の脂質</p>
-              <input type="number" class="input-calorie" v-model="form.fat" />kcal
+              <input type="number" class="input-calorie" step="0.1" v-model="form.fat" />kcal
               <button type="submit">投稿する</button>
             </div>
           </form>

@@ -1,6 +1,6 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import PostList from '../../Jetstream/PostList.vue';
+import PostList from '../../Components/PostList.vue';
 import { Link } from '@inertiajs/inertia-vue3'
 
 const props = defineProps({

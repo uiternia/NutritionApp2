@@ -1,7 +1,7 @@
 <script setup>
 import { Link } from '@inertiajs/inertia-vue3'
 import AppLayout from '@/Layouts/AppLayout.vue';
-import PostList from '../../Jetstream/PostList.vue';
+import PostList from '../../Components/PostList.vue';
 
 const props = defineProps({
     favorites: Object,

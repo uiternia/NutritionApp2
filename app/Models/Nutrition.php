@@ -9,11 +9,16 @@ class Nutrition extends Model
 {
     use HasFactory;
 
+    protected $table = 'nutritions';
+
     protected $fillable = [
+        'user_id',
         'cooking',
         'mycalorie',
         'myfat',
         'mycarbon',
         'myprotein',
     ];
+
+    
 }

@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import AppLayout from '@/Layouts/AppLayout.vue';
-import PostList from '../../Jetstream/PostList.vue';
+import PostList from '../../Components/PostList.vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import DialogModal from '../../Jetstream/DialogModal.vue';
 

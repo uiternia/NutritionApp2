@@ -10,7 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Post;
-use App\Models\Favorite;
+use App\Models\Nutrition;
 
 class User extends Authenticatable
 {
@@ -69,6 +69,11 @@ class User extends Authenticatable
     public function favorites()
     {
         return $this->belongsToMany(Post::class,'favorites');
+    }
+
+    public function nutritions()
+    {
+        return $this->hasMany(Nutrition::class,'nutritions');
     }
 
 }

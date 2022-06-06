@@ -59,6 +59,7 @@ class PostController extends Controller
 
     public function store(StorePostRequest $request)
     {
+        //validateまだ
         //投稿した際にまとめてnutrition::tableにも保存したい
         $user = Auth::id();
         $image = $request->file;
@@ -92,6 +93,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+       //
     }
 
 

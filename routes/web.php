@@ -36,7 +36,9 @@ Route::get('/mypost',[PostController::class,'mypost'])->middleware(['auth:sanctu
 Route::get('/search',[PostController::class,'search'])->middleware(['auth:sanctum'])->name('post.search');
 Route::resource('posts',PostController::class)->middleware(['auth:sanctum']);
 
-Route::resource('nutrition',NutritionController::class)->middleware(['auth:sanctum']);
+Route::resource('nutritions',NutritionController::class)->middleware(['auth:sanctum']);
+
+Route::get('bmi',[BmiController::class])->middleware(['auth:sanctum']);
 
 
 

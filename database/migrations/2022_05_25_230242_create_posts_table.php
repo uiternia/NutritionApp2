@@ -23,9 +23,9 @@ return new class extends Migration
             $table->string('content');
             $table->string('filename')->nullable();
             $table->integer('calorie');
-            $table->integer('protein');
-            $table->integer('fat');
-            $table->integer('carbon');
+            $table->double('protein',10,1);
+            $table->double('fat',10,1);
+            $table->double('carbon',10,1);
             $table->timestamps();
         });
     }
