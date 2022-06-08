@@ -18,6 +18,7 @@ class PostSeeder extends Seeder
         DB::table('posts')->insert([
             [
                 'user_id' => 1,
+                'type_id' => 1,
                 'foodname' => 'テリヤキバーガー(マック)',
                 'content' => 'testです。',
                 'filename' => '/storage/hanbuger.jpg',
@@ -28,6 +29,7 @@ class PostSeeder extends Seeder
             ],
             [
                 'user_id' => 2,
+                'type_id' => 2,
                 'foodname' => '鮭の塩焼き(75g)',
                 'content' => 'testです。',
                 'filename' => '/storage/salmon.jpg',

@@ -13,17 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('nutritions', function (Blueprint $table) {
+        Schema::create('types', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')
-            ->constrained()
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
-            $table->string('cooking');
-            $table->integer('mycalorie');
-            $table->double('mycarbon',10,1);
-            $table->double('myfat',10,1);
-            $table->double('myprotein',10,1);
+            $table->string('typeName');
             $table->timestamps();
         });
     }
@@ -35,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nutritions');
+        Schema::dropIfExists('types');
     }
 };

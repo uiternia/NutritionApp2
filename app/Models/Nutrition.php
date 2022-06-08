@@ -13,12 +13,12 @@ class Nutrition extends Model
 
     protected $fillable = [
         'user_id',
+        'type_id',
         'cooking',
         'mycalorie',
         'myfat',
         'mycarbon',
         'myprotein',
     ];
-
     
 }

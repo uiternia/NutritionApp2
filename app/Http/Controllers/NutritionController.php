@@ -6,6 +6,7 @@ use App\Http\Requests\StoreNutritionRequest;
 use App\Http\Requests\UpdateNutritionRequest;
 use App\Models\Nutrition;
 use App\Models\User;
+use App\Models\Type;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,12 +15,14 @@ class NutritionController extends Controller
 
     public function index()
     {
+        $userInfo = User::findOrFail(Auth::id());
         $user = Auth::id();
         $nutritions = Nutrition::where('user_id', $user)->get();
         return Inertia::render(
             'Nutrition/Index',
             [
                 'nutritions' => $nutritions,
+                'user' => $userInfo,
             ]
         );
     }
@@ -32,7 +35,7 @@ class NutritionController extends Controller
     public function create()
     {
         return Inertia::render(
-            'Nutrition/Create',
+            'Nutrition/Create',['types' => Type::all()]
         );
     }
 
@@ -44,11 +47,13 @@ class NutritionController extends Controller
      */
     public function store(StoreNutritionRequest $request)
     {
+        
         //XMLHTTPリクエスト使用
         $user = Auth::id();
 
         Nutrition::create([
             'user_id' => $user,
+            'type_id' => $request->type,
             'cooking' => $request->cooking,
             'mycalorie' => $request->calorie,
             'myfat' => $request->fat,

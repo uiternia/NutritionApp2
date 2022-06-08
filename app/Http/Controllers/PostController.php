@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Type;
 use App\Models\Favorite;
 use Inertia\Inertia;
 use App\Services\ImageService;
@@ -54,7 +55,10 @@ class PostController extends Controller
 
     public function create()
     {
-        return Inertia::render('Post/Create');
+        return Inertia::render(
+            'Post/Create',
+            ['types' => Type::all()]
+        );
     }
 
     public function store(StorePostRequest $request)
@@ -69,6 +73,7 @@ class PostController extends Controller
         }
         Post::create([
             'user_id' => $user,
+            'type_id' => $request->type,
             'foodname' => $request->foodname,
             'content' => $request->postText,
             'calorie' => $request->calorie,
@@ -85,15 +90,17 @@ class PostController extends Controller
     {
         $user = Auth::id();
         $postUser = $post->user;
+        $typeId = $post->type_id;
+        $type = Type::findOrFail($typeId);
         $favorite = Favorite::where('post_id', $post->id)->where('user_id', $user)->first();
         $favoriteCount = Favorite::where('post_id', $post->id)->get();
-        return Inertia::render('Post/Show', ['post' => $post, 'user' => $postUser, 'favorite' => $favorite, 'favoriteCount' => $favoriteCount]);
+        return Inertia::render('Post/Show', ['post' => $post, 'type' => $type, 'user' => $postUser, 'favorite' => $favorite, 'favoriteCount' => $favoriteCount]);
     }
 
 
     public function edit(Post $post)
     {
-       //
+        //
     }
 
 

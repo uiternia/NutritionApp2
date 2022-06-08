@@ -10,6 +10,7 @@ const props = defineProps({
   user: Object,
   favorite: Object,
   favoriteCount: Object,
+  type: Object,
 });
 
 const form = useForm({
@@ -20,6 +21,10 @@ const isopen = ref(false);
 
 const favoritePost = (id) => {
   form.post(route("favorite.store", id))
+}
+
+const myNutritionadd = (id) => {
+  form.post(route("favorite.add",id))
 }
 
 const favoriteDelete = (id) => {
@@ -53,6 +58,7 @@ const deletePosts = (id) => {
           <PostList />
           <div>{{ user.name }}の投稿</div>
           <div>{{ post.foodname }}</div>
+          <div>{{type.typeName}}</div>
           <img :src="post.filename">
           <div v-if="user.id === post.user_id">
             <button @click="isopen = true">消去する</button>
@@ -63,6 +69,7 @@ const deletePosts = (id) => {
           <div v-else>
             <button @click="favoriteDelete(post.id)">お気に入り解除{{ favoriteCount.length }}</button>
           </div>
+          <button @click="myNutritionadd(post.id)">普段の食事に追加</button>
         </div>
       </div>
     </div>

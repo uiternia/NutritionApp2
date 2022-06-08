@@ -16,6 +16,7 @@ const form = useForm({
   fat: props.nutrition.myfat,
   carbon: props.nutrition.mycarbon,
   protein: props.nutrition.myprotein,
+  type: props.nutrition.typeName,
 });
 
 const submit = () => {
@@ -57,6 +58,7 @@ const deletePosts = (id) => {
             <input type="number" step="0.1" class="input-calorie" v-model="form.protein" />kcal
             <p class="form-content font-mono">食事の脂質</p>
             <input type="number" step="0.1" class="input-calorie" v-model="form.fat" />kcal
+            
             <button type="submit">更新する</button>
           </form>
           <button type="button" @click="isopen = true">消去する</button>

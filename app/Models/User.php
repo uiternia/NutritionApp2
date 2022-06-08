@@ -11,6 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Post;
 use App\Models\Nutrition;
+Use App\Models\Health;
 
 class User extends Authenticatable
 {
@@ -29,6 +30,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'height',
+        'weight',
+        'male',
+        'mets',
     ];
 
     /**
@@ -75,5 +80,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Nutrition::class,'nutritions');
     }
+
 
 }

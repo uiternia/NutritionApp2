@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 use App\Models\Favorite;
+use App\Models\Nutrition;
 use App\Models\User;
 use Inertia\Inertia;
 
@@ -21,6 +22,22 @@ class FavoriteController extends Controller
         [
             'favorites' => $favorites,
         ]);
+    }
+
+    public function add(Post $post) 
+    {
+        $user = Auth::id();
+        Nutrition::create([
+            'user_id' => $user,
+            'type_id' => $post->type_id,
+            'cooking' => $post->foodname,
+            'mycalorie' => $post->calorie,
+            'myfat' => $post->fat,
+            'mycarbon' => $post->carbon,
+            'myprotein' => $post->protein,
+        ]);
+        $nutritions = Nutrition::where('user_id', $user)->get();
+        return Inertia::render('Nutrition/Index',['nutritions' => $nutritions]);
     }
 
     public function store(Post $post)

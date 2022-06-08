@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\NutritionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,7 @@ Route::get('/', function () {
 
 
 Route::get('/favorite',[FavoriteController::class,'index'])->middleware(['auth:sanctum'])->name('favorite.index');
+Route::post('/favorite/{post}',[FavoriteController::class,'add'])->middleware(['auth:sanctum'])->name('favorite.add');
 Route::post('/posts/{post}/favorite',[FavoriteController::class,'store'])->middleware(['auth:sanctum'])->name('favorite.store');
 Route::post('/posts/{post}/unfavorite',[FavoriteController::class,'delete'])->middleware(['auth:sanctum'])->name('favorite.delete');
 
@@ -38,7 +41,9 @@ Route::resource('posts',PostController::class)->middleware(['auth:sanctum']);
 
 Route::resource('nutritions',NutritionController::class)->middleware(['auth:sanctum']);
 
-Route::get('bmi',[BmiController::class])->middleware(['auth:sanctum']);
+Route::get('/users',[UserController::class,'index'])->middleware('auth:sanctum')->name('users.index');
+Route::get('/users/{user}/edit',[UserController::class,'edit'])->middleware(['auth:sanctum'])->name('users.edit');
+Route::put('/users{user}',[UserController::class,'update'])->middleware(['auth:sanctum'])->name('users.update');
 
 
 

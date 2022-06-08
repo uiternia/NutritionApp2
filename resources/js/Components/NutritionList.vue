@@ -11,6 +11,9 @@ import JetNavLink from '@/Jetstream/NavLink.vue';
             <JetNavLink :href="route('nutritions.create')" :active="route().current('nutritions.create')">
                 <div>普段の食事追加</div>
             </JetNavLink>
+            <JetNavLink :href="route('users.index')" :active="route().current('users.index')">
+                <div>BMI</div>
+            </JetNavLink>
         </div>
     </div>
 </template>

@@ -13,6 +13,7 @@ class Post extends Model
 
     protected $fillable = [
         'foodname',
+        'type_id',
         'user_id',
         'filename',
         'content',

@@ -9,6 +9,11 @@ const fileName = ref("")
 const url = ref("")
 const imageShow = ref(false)
 
+
+const props = defineProps({
+  types: Array,
+});
+
 const form = useForm({
   foodname: null,
   file: null,
@@ -17,6 +22,7 @@ const form = useForm({
   carbon: null,
   protein: null,
   fat: null,
+  type: 1,
 })
 
 const fileSelected = (e) => {
@@ -64,6 +70,11 @@ const submit = () => {
               <input type="number" class="input-calorie" step="0.1" v-model="form.protein" />kcal
               <p class="form-content font-mono">食事の脂質</p>
               <input type="number" class="input-calorie" step="0.1" v-model="form.fat" />kcal
+              <select v-model="form.type" name="type">
+                <option v-for="type in types" :value="type.id" :key="type.id">
+                  {{ type.typeName }}
+                </option>
+              </select>
               <button type="submit">投稿する</button>
             </div>
           </form>
