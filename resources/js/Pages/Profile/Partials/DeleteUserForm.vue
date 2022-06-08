@@ -40,32 +40,32 @@ const closeModal = () => {
 <template>
     <JetActionSection>
         <template #title>
-            Delete Account
+            アカウント消去
         </template>
 
         <template #description>
-            Permanently delete your account.
+            アカウントを完全に削除
         </template>
 
         <template #content>
             <div class="max-w-xl text-sm text-gray-600">
-                Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.
+                アカウントが削除されると、そのリソースとデータはすべて永久に削除されます。アカウントを削除する前に、保持したいデータまたは情報をダウンロードしてください。
             </div>
 
             <div class="mt-5">
                 <JetDangerButton @click="confirmUserDeletion">
-                    Delete Account
+                    アカウントの消去
                 </JetDangerButton>
             </div>
 
             <!-- Delete Account Confirmation Modal -->
             <JetDialogModal :show="confirmingUserDeletion" @close="closeModal">
                 <template #title>
-                    Delete Account
+                    アカウントの消去
                 </template>
 
                 <template #content>
-                    Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.
+                    本当にアカウントを削除するのですか？アカウントを削除すると、そのリソースとデータはすべて永久に削除されます。パスワードを入力して、アカウントを削除することを確認してください。
 
                     <div class="mt-4">
                         <JetInput
@@ -83,7 +83,7 @@ const closeModal = () => {
 
                 <template #footer>
                     <JetSecondaryButton @click="closeModal">
-                        Cancel
+                        キャンセル
                     </JetSecondaryButton>
 
                     <JetDangerButton
@@ -92,7 +92,7 @@ const closeModal = () => {
                         :disabled="form.processing"
                         @click="deleteUser"
                     >
-                        Delete Account
+                        アカウントの削除
                     </JetDangerButton>
                 </template>
             </JetDialogModal>

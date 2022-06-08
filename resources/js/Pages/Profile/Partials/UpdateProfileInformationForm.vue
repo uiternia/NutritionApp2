@@ -79,11 +79,11 @@ const clearPhotoFileInput = () => {
 <template>
     <JetFormSection @submitted="updateProfileInformation">
         <template #title>
-            Profile Information
+            アカウント情報
         </template>
 
         <template #description>
-            Update your account's profile information and email address.
+            アカウントのプロフィール情報とメールアドレスを更新する。
         </template>
 
         <template #form>
@@ -130,7 +130,7 @@ const clearPhotoFileInput = () => {
 
             <!-- Name -->
             <div class="col-span-6 sm:col-span-4">
-                <JetLabel for="name" value="Name" />
+                <JetLabel for="name" value="お名前" />
                 <JetInput
                     id="name"
                     v-model="form.name"
@@ -143,7 +143,7 @@ const clearPhotoFileInput = () => {
 
             <!-- Email -->
             <div class="col-span-6 sm:col-span-4">
-                <JetLabel for="email" value="Email" />
+                <JetLabel for="email" value="メールアドレス" />
                 <JetInput
                     id="email"
                     v-model="form.email"
