@@ -24,7 +24,12 @@ class StoreNutritionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'type_id' => 'required',
+            'cooking' => 'required',
+            'mycalorie' => 'required',
+            'myfat' => 'required',
+            'mycarbon' => 'required',
+            'myprotein' => 'required',
         ];
     }
 }

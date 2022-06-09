@@ -64,7 +64,7 @@ const deletePosts = (id) => {
             <button @click="isopen = true">消去する</button>
           </div>
           <div v-if="favorite === null">
-            <button @click="favoritePost(post.id)">お気に入り{{ favoriteCount.length }}</button>
+            <button @click.prevent="favoritePost(post.id)">お気に入り{{ favoriteCount.length }}</button>
           </div>
           <div v-else>
             <button @click="favoriteDelete(post.id)">お気に入り解除{{ favoriteCount.length }}</button>

@@ -24,7 +24,14 @@ class StorePostRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'type' => 'required',
+            'foodname' => 'required',
+            'postText' => 'required',
+            'calorie' => 'required',
+            'carbon' => 'required',
+            'protein' => 'required',
+            'fat' => 'required',
+            'file' => 'required',
         ];
     }
 }
