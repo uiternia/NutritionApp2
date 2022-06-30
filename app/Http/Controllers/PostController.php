@@ -32,7 +32,12 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = DB::table('posts')->paginate(2);
+        $posts = DB::table('users')
+            ->join('posts', 'users.id', '=', 'posts.user_id')
+            ->paginate(20);
+
+            // $posts = User::with('posts')->get();
+             
         return Inertia::render(
             'Post/Index',
             [
@@ -87,13 +92,13 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        $user = Auth::id();
+        $user = User::findOrfail(Auth::id());
         $postUser = $post->user;
         $typeId = $post->type_id;
         $type = Type::findOrFail($typeId);
         $favorite = Favorite::where('post_id', $post->id)->where('user_id', $user)->first();
         $favoriteCount = Favorite::where('post_id', $post->id)->get();
-        return Inertia::render('Post/Show', ['post' => $post, 'type' => $type, 'user' => $postUser, 'favorite' => $favorite, 'favoriteCount' => $favoriteCount]);
+        return Inertia::render('Post/Show', ['user'=> $user,'post' => $post, 'type' => $type, 'postUser' => $postUser, 'favorite' => $favorite, 'favoriteCount' => $favoriteCount]);
     }
 
 

@@ -12,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Models\Post;
 use App\Models\Nutrition;
 Use App\Models\Health;
+use Attribute;
 
 class User extends Authenticatable
 {
@@ -66,9 +67,10 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+
     public function posts()
     {
-        return $this->hasMany(Post::class,'posts');
+        return $this->hasMany(Post::class);
     }
 
     public function favorites()

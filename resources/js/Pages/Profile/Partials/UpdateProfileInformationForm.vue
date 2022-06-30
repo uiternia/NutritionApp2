@@ -81,7 +81,6 @@ const clearPhotoFileInput = () => {
         <template #title>
             アカウント情報
         </template>
-
         <template #description>
             アカウントのプロフィール情報とメールアドレスを更新する。
         </template>

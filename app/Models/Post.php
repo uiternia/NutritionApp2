@@ -11,6 +11,7 @@ class Post extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'foodname',
         'type_id',

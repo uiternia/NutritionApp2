@@ -78,7 +78,7 @@ const requireCarbon = computed(() => {
           <NutritionList />
           <div v-for="nutrition in nutritions" :key="nutrition.id">
             <Link :href="route('nutritions.edit', nutrition.id)">
-            {{ nutrition.cooking }}
+            <div class="name">{{ nutrition.cooking }}</div>
             </Link>
             <input type="checkbox" v-model="todayMeal" :value="nutrition">
           </div>

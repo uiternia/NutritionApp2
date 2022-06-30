@@ -15,6 +15,13 @@ class UserController extends Controller
     }
     public function edit(User $user)
     {
+        $id = $user->id;
+        if(!is_null($id)){
+            $user_id = Auth::id();
+            if($user_id !== $id){
+                abort(404);
+            }
+        }
         return Inertia('User/Edit',['user' => $user]);
     }
     public function update(Request $request , User $user )

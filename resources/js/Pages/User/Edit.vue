@@ -28,9 +28,9 @@ const submit = () => {
           <NutritionList />
           <form @submit.prevent="submit">
           <p class="form-content font-mono">身長</p>
-          <input type="number" class="input-calorie" v-model="form.height" />
+          <input type="number" step="0.1" class="input-calorie" v-model="form.height" />
           <p class="form-content font-mono">体重</p>
-          <input type="number" class="input-calorie" v-model="form.weight" />
+          <input type="number" step="0.1" class="input-calorie" v-model="form.weight" />
           <p class="form-content font-mono">性別</p>
           女性<input type="radio" name="male" value="1" class="input-calorie" v-model="form.male" />
           男性<input type="radio" name="male" value="0" class="input-calorie" v-model="form.male" />
