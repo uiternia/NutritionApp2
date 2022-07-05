@@ -19,7 +19,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->double('height',10,1)->nullable();
+            $table->double('weight',10,1)->nullable();
+            $table->boolean('male')->nullable();
+            $table->double('mets',10,1)->nullable();
             $table->rememberToken();
+            $table->foreignId('current_team_id')->nullable();
+            $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
     }
