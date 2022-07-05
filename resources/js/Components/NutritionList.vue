@@ -4,7 +4,7 @@ import JetNavLink from '@/Jetstream/NavLink.vue';
 
 <template>
     <div>
-        <div class="space-x-8 sm:-my-px sm:ml-10 flex">
+        <div class="space-x-8 sm:-my-px sm:ml-10 flex py-4 justify-center">
             <JetNavLink :href="route('nutritions.index')" :active="route().current('nutritions.index')">
                 <div>栄養管理</div>
             </JetNavLink>

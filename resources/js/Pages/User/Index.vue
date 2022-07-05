@@ -33,13 +33,19 @@ const standardWeight = computed(() => {
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
           <NutritionList />
-          <Link :href="route('users.edit', user.id)">
-          {{ user.name }}
+           <div v-if="bmi === null" class="flex justify-center mx-4">
+            <p class="py-2">現在の身長/体重等を登録するとBMI/標準体重を確認できます。<br>また登録後栄養管理の画面に1日の必要栄養量が表示されます。</p>
+          </div>
+          <div v-else>
+          <p class="flex justify-center text-xl py-4 border-dotted border-4 border-gray-600 mx-12">{{user.name}}さんのBMI:{{bmi}}<br>
+           {{user.name}}さんの標準体重:{{standardWeight}}kg
+          </p>
+          </div>
+          <div class="flex justify-center py-6">
+           <Link :href="route('users.edit', user.id)">
+           <button class="mt-4 bg-gradient-to-br from-green-300 to-green-800 hover:bg-gradient-to-tl text-white rounded px-4 py-2">登録/更新</button>
           </Link>
-          <br>
-          あなたのBMI:{{bmi}}
-          <br>
-          あなたの標準体重:{{standardWeight}}kg
+          </div>
         </div>
       </div>
     </div>

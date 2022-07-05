@@ -16,11 +16,12 @@ class FavoriteController extends Controller
     public function index()
     {
         $user = User::findOrFail(Auth::id());
-        $favorites = $user->favorites;
+        $posts = $user->favorites()->paginate(12);
         
         return Inertia::render('Post/Favorite',
         [
-            'favorites' => $favorites,
+            'user' => $user,
+            'posts' => $posts,
         ]);
     }
 

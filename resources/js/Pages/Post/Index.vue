@@ -68,20 +68,10 @@ const submit = () => {
                             <p class="text-gray-500 mb-8">カロリー/{{post.calorie}}kcal</p>
                             <div class="flex justify-between items-end mt-auto">
                                 <div class="flex items-center gap-2">
-                                    <!-- <div class="w-10 h-10 shrink-0 bg-gray-100 rounded-full overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1611898872015-0571a9e38375?auto=format&q=75&fit=crop&w=64"
-                                            loading="lazy" alt="Photo by Brock Wegner"
-                                            class="w-full h-full object-cover object-center" />
-                                           <img class="h-10 w-10 rounded-full object-cover" :src="post.profile_photo_url" :alt="post.filename">
-                                          
-                                    </div> -->
                                     <div>
                                         <span class="block text-indigo-500">{{post.name}}さんの投稿</span>
-                                        <!-- <span class="block text-gray-400 text-sm">{{post.created_at}}</span> -->
                                     </div>
                                 </div>
-
-                                <span class="text-gray-600 text-sm border rounded px-2 py-1">Article</span>
                             </div>
                         </div>
                     </div>

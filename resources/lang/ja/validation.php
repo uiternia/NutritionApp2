@@ -141,5 +141,9 @@ return [
         'protein' => 'タンパク質',
         'fat' => '脂質',
         'file' => '写真',
+        'height' => '身長',
+        'weight' => '体重',
+        'male' => '性別',
+        'mets' => '運動量'
     ],
 ];

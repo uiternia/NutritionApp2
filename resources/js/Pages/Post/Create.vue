@@ -46,7 +46,7 @@ const submit = () => {
 <template>
   <AppLayout title="投稿一覧">
     <div class="py-12">
-      <JetValidationErrors class="mb-4" />
+      <JetValidationErrors class="mb-4 ml-4" />
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
           <PostList />
@@ -65,17 +65,17 @@ const submit = () => {
               <p class="form-content font-mono">食事のカロリー</p>
               <input type="number" class="input-calorie" step="0.1" v-model="form.calorie" />kcal
               <p class="form-content font-mono">炭水化物</p>
-              <input type="number" class="input-calorie" step="0.1" v-model="form.carbon" />kcal
+              <input type="number" class="input-calorie" step="0.1" v-model="form.carbon" />g
               <p class="form-content font-mono">食事のタンパク質</p>
-              <input type="number" class="input-calorie" step="0.1" v-model="form.protein" />kcal
+              <input type="number" class="input-calorie" step="0.1" v-model="form.protein" />g
               <p class="form-content font-mono">食事の脂質</p>
-              <input type="number" class="input-calorie" step="0.1" v-model="form.fat" />kcal
+              <input type="number" class="input-calorie" step="0.1" v-model="form.fat" />g
               <select v-model="form.type" name="type">
                 <option v-for="type in types" :value="type.id" :key="type.id">
                   {{ type.typeName }}
                 </option>
               </select>
-              <button type="submit">投稿する</button>
+              <button type="submit" class="mt-4 bg-gradient-to-br from-green-300 to-green-800 hover:bg-gradient-to-tl text-white rounded px-4 py-2">投稿する</button>
             </div>
           </form>
         </div>

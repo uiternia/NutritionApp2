@@ -106,10 +106,10 @@ class NutritionController extends Controller
     {
         $validate = $request->validate([
             'cooking' => 'required',
-            'calorie' => 'required',
-            'fat' => 'required',
-            'carbon' => 'required',
-            'protein' => 'required',
+            'mycalorie' => 'required',
+            'myfat' => 'required',
+            'mycarbon' => 'required',
+            'myprotein' => 'required',
         ]);
         $nutrition->update($validate);
         return redirect()->route('nutritions.index');

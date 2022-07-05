@@ -24,7 +24,11 @@ class UpdateNutritionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'cooking' => 'required',
+            'mycalorie' => 'required',
+            'myfat' => 'required',
+            'mycarbon' => 'required',
+            'myprotein' => 'required',
         ];
     }
 }

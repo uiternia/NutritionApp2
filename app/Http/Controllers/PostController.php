@@ -20,11 +20,13 @@ class PostController extends Controller
 
     public function mypost()
     {
-        $user = Auth::id();
-        $posts = Post::where('user_id', $user)->get();
+        $userId = Auth::id();
+        $user = USer::findOrFail(Auth::id());
+        $posts = Post::where('user_id', $userId)->paginate(12);
         return Inertia::render(
             'Post/MyPost',
             [
+                'user' => $user,
                 'posts' => $posts,
             ]
         );
@@ -34,9 +36,7 @@ class PostController extends Controller
     {
         $posts = DB::table('users')
             ->join('posts', 'users.id', '=', 'posts.user_id')
-            ->paginate(20);
-
-            // $posts = User::with('posts')->get();
+            ->paginate(12);
              
         return Inertia::render(
             'Post/Index',
@@ -49,7 +49,7 @@ class PostController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->keyword;
-        $posts = Post::where('foodname', 'like', '%' . $keyword . '%')->get();
+        $posts = Post::where('foodname', 'like', '%' . $keyword . '%')->paginate(50);
         return Inertia::render(
             'Post/Search',
             [
@@ -92,11 +92,12 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
+        $userId = Auth::id();
         $user = User::findOrfail(Auth::id());
         $postUser = $post->user;
         $typeId = $post->type_id;
         $type = Type::findOrFail($typeId);
-        $favorite = Favorite::where('post_id', $post->id)->where('user_id', $user)->first();
+        $favorite = Favorite::where('post_id', $post->id)->where('user_id', $userId)->first();
         $favoriteCount = Favorite::where('post_id', $post->id)->get();
         return Inertia::render('Post/Show', ['user'=> $user,'post' => $post, 'type' => $type, 'postUser' => $postUser, 'favorite' => $favorite, 'favoriteCount' => $favoriteCount]);
     }
