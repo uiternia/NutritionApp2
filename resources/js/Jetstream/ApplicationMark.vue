@@ -1,3 +1,3 @@
 <template>
-    <img src="/storage/logoN.PNG"/>
+    <img src="/images/logoN.PNG"/>
 </template>
