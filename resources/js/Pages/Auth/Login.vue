@@ -71,7 +71,7 @@ const submit = () => {
 .img {
     height: 100vh;
     width: 100%;
-    background-image: url("/storage/topPc.JPG");
+    background-image: url("/images/topPc.JPG");
     background-size: cover;
     background-position: center;
 }
